@@ -5,7 +5,7 @@ import "forge-std/Script.sol";
 import "forge-std/Test.sol";
 import "../src/interfaces/IEthernaut.sol";
 
-contract EthernautSolverBase is Script {
+contract SolveLevelBase is Script {
     IEthernaut ethernaut =
         IEthernaut(0x73379d8B82Fda494ee59555f333DF7D44483fD58);
     address levelAddress;

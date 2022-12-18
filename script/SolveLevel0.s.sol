@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import "./EthernautSolverBase.sol";
+import "./SolveLevelBase.sol";
 import "../src/interfaces/IHelloEthernaut.sol";
 
-contract SolveLevel0 is EthernautSolverBase {
+contract SolveLevel0 is SolveLevelBase {
     function getInstanceCreationData()
         internal
         pure
