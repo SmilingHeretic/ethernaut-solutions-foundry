@@ -8,15 +8,13 @@ import "../src/interfaces/IEthernaut.sol";
 contract SolveLevelBase is Script {
     IEthernaut ethernaut =
         IEthernaut(0x73379d8B82Fda494ee59555f333DF7D44483fD58);
-    address levelAddress;
-    uint256 valueForInstanceCreation;
 
     function run() external {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
 
         (address levelAddress, uint256 value) = getInstanceCreationData();
-        address payable instanceAddress = getNewInstance(levelAddress, value);
+        address instanceAddress = getNewInstance(levelAddress, value);
         solveLevel(instanceAddress);
         submitInstance(instanceAddress);
 
@@ -26,18 +24,16 @@ contract SolveLevelBase is Script {
     function getNewInstance(
         address levelAddress,
         uint256 valueForInstanceCreation
-    ) internal returns (address payable instanceAddress) {
+    ) internal returns (address instanceAddress) {
         vm.recordLogs();
         ethernaut.createLevelInstance{value: valueForInstanceCreation}(
             levelAddress
         );
         Vm.Log[] memory entries = vm.getRecordedLogs();
-        instanceAddress = payable(
-            address(uint160(uint256(entries[0].topics[2])))
-        );
+        instanceAddress = address(uint160(uint256(entries[0].topics[2])));
     }
 
-    function submitInstance(address payable instanceAddress) internal {
+    function submitInstance(address instanceAddress) internal {
         ethernaut.submitLevelInstance(payable(instanceAddress));
     }
 
