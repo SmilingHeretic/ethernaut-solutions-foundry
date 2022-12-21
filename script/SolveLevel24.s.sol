@@ -28,6 +28,8 @@ contract SolveLevel24 is SolveLevelBase {
             instance.deposit.selector
         );
 
+        // wrapping for multicall to bypass require(!depositCalled, "Deposit can only be called once");
+        // when doing 2nd deposit and reusing msg.value
         bytes[] memory depositCalldataArray;
         depositCalldataArray = new bytes[](1);
         depositCalldataArray[0] = depositCalldata;
