@@ -12,9 +12,7 @@ interface IDexTwo {
         uint256 amount
     ) external;
 
-    function add_liquidity(address token_address, uint256 amount) external;
-
-    function get_swap_price(
+    function getSwapPrice(
         address from,
         address to,
         uint256 amount
