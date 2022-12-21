@@ -2,17 +2,17 @@
 pragma solidity ^0.8.13;
 
 import "./SolveLevelBase.sol";
-import "../src/interfaces/ITelephone.sol";
-import "../src/exploits/TelephoneExploit.sol";
+import "../src/interfaces/IElevator.sol";
+import "../src/exploits/Building.sol";
 
-contract SolveLevel4 is SolveLevelBase {
+contract SolveLevel11 is SolveLevelBase {
     function getInstanceCreationData()
         internal
         pure
         override
         returns (address levelAddress, uint256 value)
     {
-        levelAddress = 0x131c3249e115491E83De375171767Af07906eA36;
+        levelAddress = 0xB4802b28895ec64406e45dB504149bfE79A38A57;
         value = 0;
     }
 
@@ -20,9 +20,9 @@ contract SolveLevel4 is SolveLevelBase {
         internal
         override
     {
-        ITelephone instance = ITelephone(instanceAddress);
-        TelephoneExploit exploit = new TelephoneExploit(instance);
+        IElevator instance = IElevator(instanceAddress);
+        Building building = new Building(instance);
 
-        exploit.exploit();
+        building.goToLastFloor();
     }
 }

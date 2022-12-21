@@ -10,12 +10,14 @@ contract SolveLevelBase is Script {
         IEthernaut(0x73379d8B82Fda494ee59555f333DF7D44483fD58);
 
     function run() external {
-        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
-        vm.startBroadcast(deployerPrivateKey);
+        uint256 playerPrivateKey = vm.envUint("PRIVATE_KEY");
+        address player = vm.addr(playerPrivateKey);
+
+        vm.startBroadcast(playerPrivateKey);
 
         (address levelAddress, uint256 value) = getInstanceCreationData();
         address instanceAddress = getNewInstance(levelAddress, value);
-        solveLevel(instanceAddress);
+        solveLevel(instanceAddress, player);
         submitInstance(instanceAddress);
 
         vm.stopBroadcast();
@@ -30,14 +32,19 @@ contract SolveLevelBase is Script {
             levelAddress
         );
         Vm.Log[] memory entries = vm.getRecordedLogs();
-        instanceAddress = address(uint160(uint256(entries[0].topics[2])));
+        instanceAddress = address(
+            uint160(uint256(entries[entries.length - 1].topics[2]))
+        );
     }
 
     function submitInstance(address instanceAddress) internal {
         ethernaut.submitLevelInstance(payable(instanceAddress));
     }
 
-    function solveLevel(address instanceAddress) internal virtual {}
+    function solveLevel(address instanceAddress, address player)
+        internal
+        virtual
+    {}
 
     function getInstanceCreationData()
         internal

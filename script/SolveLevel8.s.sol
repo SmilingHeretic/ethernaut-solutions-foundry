@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
 import "./SolveLevelBase.sol";
@@ -15,7 +15,10 @@ contract SolveLevel8 is SolveLevelBase {
         value = 0;
     }
 
-    function solveLevel(address instanceAddress) internal override {
+    function solveLevel(address instanceAddress, address player)
+        internal
+        override
+    {
         IVault instance = IVault(instanceAddress);
 
         bytes32 password = vm.load(instanceAddress, bytes32(uint256(1)));

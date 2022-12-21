@@ -12,7 +12,7 @@ contract SolveLevel10 is SolveLevelBase {
         override
         returns (address levelAddress, uint256 value)
     {
-        levelAddress = 0x0AFc648f6D22390d6642Ebc7e1579fC480FE2278;
+        levelAddress = 0x2754fA769d47ACdF1f6cDAa4B0A8Ca4eEba651eC;
         value = 0.001 ether;
     }
 

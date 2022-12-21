@@ -2,17 +2,17 @@
 pragma solidity ^0.8.13;
 
 import "./SolveLevelBase.sol";
-import "../src/interfaces/ITelephone.sol";
-import "../src/exploits/TelephoneExploit.sol";
+import "../src/interfaces/IGatekeeperTwo.sol";
+import "../src/exploits/GatekeeperTwoExploit.sol";
 
-contract SolveLevel4 is SolveLevelBase {
+contract SolveLevel14 is SolveLevelBase {
     function getInstanceCreationData()
         internal
         pure
         override
         returns (address levelAddress, uint256 value)
     {
-        levelAddress = 0x131c3249e115491E83De375171767Af07906eA36;
+        levelAddress = 0xF781b45d11A37c51aabBa1197B61e6397aDf1f78;
         value = 0;
     }
 
@@ -20,9 +20,7 @@ contract SolveLevel4 is SolveLevelBase {
         internal
         override
     {
-        ITelephone instance = ITelephone(instanceAddress);
-        TelephoneExploit exploit = new TelephoneExploit(instance);
-
-        exploit.exploit();
+        IGatekeeperTwo instance = IGatekeeperTwo(instanceAddress);
+        GatekeeperTwoExploit exploit = new GatekeeperTwoExploit(instance);
     }
 }

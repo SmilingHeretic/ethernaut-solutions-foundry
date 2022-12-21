@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
 import "./SolveLevelBase.sol";
@@ -16,7 +16,10 @@ contract SolveLevel3 is SolveLevelBase {
         value = 0;
     }
 
-    function solveLevel(address instanceAddress) internal override {
+    function solveLevel(address instanceAddress, address player)
+        internal
+        override
+    {
         // I didn't manage to make this one work on anvil
         // Worked on Mumbai with command:
         // forge script script/SolveLevel3.s.sol:SolveLevel3 --rpc-url $MUMBAI_RPC_URL --broadcast -vvvv --slow --skip-simulation
