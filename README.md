@@ -14,7 +14,7 @@ PRIVATE_KEY=<private key of the account that will be the player of Ethernaut>
 
 
 ### How to solve a level on a local fork of Mumbai network:
-1. From project directory run: `source .env`.
+1. From the project directory run: `source .env`.
 2. Start local fork of Mumbai with [anvil](https://book.getfoundry.sh/tutorials/forking-mainnet-with-cast-anvil):
 ```
 anvil --fork-url $MUMBAI_RPC_URL
@@ -25,7 +25,7 @@ forge script script/SolveLevel25.s.sol:SolveLevel25 --rpc-url http://localhost:8
 ```
 
 ### How to solve a level on the actual Mumbai testnet:
-1. From project directory run: `source .env`
+1. From the project directory run: `source .env`
 2. To solve e.g. level 24 run:
 ```
 forge script script/SolveLevel24.s.sol:SolveLevel24 --rpc-url $MUMBAI_RPC_URL --broadcast -vvvv
