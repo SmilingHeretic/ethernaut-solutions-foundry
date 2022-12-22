@@ -5,7 +5,7 @@ Solutions to smart contract security CTF [Ethernaut](https://ethernaut.openzeppe
 # How to run
 
 1. [Install foundry](https://book.getfoundry.sh/getting-started/installation).
-2. Create an app on [Alchemy](https://www.alchemy.com/) and set app's network to Polygon Mumbai
+2. Create an app on [Alchemy](https://www.alchemy.com/) and set this app's network to Polygon Mumbai
 3. Create `.env` file in the project directory and set the following variables in this file:
 ```
 MUMBAI_RPC_URL=https://polygon-mumbai.g.alchemy.com/v2/<your Alchemy API key>
@@ -32,7 +32,7 @@ forge script script/SolveLevel24.s.sol:SolveLevel24 --rpc-url $MUMBAI_RPC_URL --
 ```
 
 ### Known issues:
-Solution to level 3 Coin Flip doesn't work on local anvil network. To solve it on the actual Mumbai network run:
+Solution of level 3 Coin Flip doesn't work on local anvil network. To solve it on the actual Mumbai network run:
 ```
 forge script script/SolveLevel3.s.sol:SolveLevel3 --rpc-url $MUMBAI_RPC_URL --broadcast -vvvv --slow --skip-simulation
 ```
