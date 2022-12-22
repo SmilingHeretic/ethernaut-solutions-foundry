@@ -36,3 +36,5 @@ Solution of level 3 Coin Flip doesn't work on local anvil network. To solve it o
 ```
 forge script script/SolveLevel3.s.sol:SolveLevel3 --rpc-url $MUMBAI_RPC_URL --broadcast -vvvv --slow --skip-simulation
 ```
+
+There's a workaround in solution to level 12 Privacy. Hopefully, the intended solution will start working after [this issue](https://github.com/foundry-rs/foundry/pull/3930) with wrong `tx.origin` when using `broadcast` in foundry gets resolved.
